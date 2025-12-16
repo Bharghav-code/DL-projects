@@ -9,22 +9,22 @@ from matplotlib import pyplot as plt
 
 torch.manual_seed(42)
 
-# Load California Housing dataset (regression)
+
 housing = fetch_california_housing()
 X_data = housing.data
 y_data = housing.target.reshape(-1, 1)
 
-# Split into train and test sets
+
 X_train, X_test, y_train, y_test = train_test_split(
     X_data, y_data, test_size=0.2, random_state=42
 )
 
-# Standardize the data
+
 scale = StandardScaler()
 X_train = scale.fit_transform(X_train)
 X_test = scale.transform(X_test)
 
-# Convert to PyTorch tensors
+
 X_train = torch.tensor(X_train, dtype=torch.float32)
 X_test = torch.tensor(X_test, dtype=torch.float32)
 y_train = torch.tensor(y_train, dtype=torch.float32)
@@ -213,3 +213,4 @@ plt.xlabel("Epochs")
 plt.ylabel("Loss")
 
 plt.show()
+
